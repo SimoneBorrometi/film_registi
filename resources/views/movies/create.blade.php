@@ -3,7 +3,7 @@
 @section('title','Crea')
 
 @section('content')
-    <form action="/m" method="post">
+    <form action="/movie" method="post">
         @csrf
         <input type="text" name="title" placeholder="Titolo" required><br>
         Score:<input type="number" name="score" step="0.1" required><br>

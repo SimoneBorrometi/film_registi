@@ -8,8 +8,8 @@
 </head>
 <body>
     <h1>Film e registi</h1>
-    <a href="/d">Modifica i registi</a> <br>
-    <a href="/m">Modifica i film</a>
+    <a href="/director">Modifica i registi</a> <br>
+    <a href="/movie">Modifica i film</a>
     
 </body>
 </html>

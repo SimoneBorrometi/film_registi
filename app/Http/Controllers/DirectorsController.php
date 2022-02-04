@@ -37,7 +37,7 @@ class DirectorsController extends Controller
     public function store(Request $request)
     {
         Director::create($request->all());
-        return redirect('/d');
+        return redirect('/director');
     }
 
     /**
@@ -46,15 +46,19 @@ class DirectorsController extends Controller
      * @param  \App\Models\Director  $director
      * @return \Illuminate\Http\Response
      */
-    // public function show(Director $director)
-    // {
-    //     return view('directors.show',['director' => $director]);
-    // }
-    public function show($id)
+
+    //Per il Model Binding è necessario che il parametro abbbia lo stesso nome del id nella route
+    //In questo caso /director/{director} (da route list)
+    //Precedentemente la route era /d/{d} , rendendo impossibile il MB
+    public function show(Director $director)
     {
-        $director = Director::findOrFail($id);
         return view('directors.show',compact('director'));
     }
+    // public function show($id)
+    // {
+    //     $director = Director::findOrFail($id);
+    //     return view('directors.show',compact('director'));
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -62,9 +66,8 @@ class DirectorsController extends Controller
      * @param  \App\Models\Director  $director
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Director $director)
     {
-        $director = Director::findOrFail($id);
         return view('directors.edit',compact('director'));
     }
 
@@ -75,11 +78,10 @@ class DirectorsController extends Controller
      * @param  \App\Models\Director  $director
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Director $director)
     {
-        $director = Director::findOrFail($id);
         $director->update($request->all());
-        return redirect('/d');
+        return redirect('/director');
     }
 
     /**
@@ -88,10 +90,9 @@ class DirectorsController extends Controller
      * @param  \App\Models\Director  $director
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Director $director)
     {
-        $director = Director::findOrFail($id);
         $director->delete();
-        return redirect('/d');
+        return redirect('/director');
     }
 }

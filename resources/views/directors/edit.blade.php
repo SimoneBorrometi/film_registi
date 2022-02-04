@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <form action="/d/{{$director->id}}" method="post">
+    <form action="/director/{{$director->id}}" method="post">
         @csrf
         @method('PATCH')
 
@@ -15,7 +15,7 @@
             <input type="submit" value="Modifica">
     </form>
 
-    <form action="/d/{{$director->id}}" method="POST" >
+    <form action="/director/{{$director->id}}" method="POST" >
         @csrf
         @method('DELETE')
             <input type="submit" value="ELIMINA">

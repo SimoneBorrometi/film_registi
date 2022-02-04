@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <form action="/m/{{$movie->id}}" method="post">
+    <form action="/movie/{{$movie->id}}" method="post">
         @csrf
         @method('PATCH')
 
@@ -15,7 +15,7 @@
             <input type="submit" value="Modifica">
     </form>
 
-    <form action="/d/{{$movie->id}}" method="POST" >
+    <form action="/movie/{{$movie->id}}" method="POST" >
         @csrf
         @method('DELETE')
             <input type="submit" value="ELIMINA">

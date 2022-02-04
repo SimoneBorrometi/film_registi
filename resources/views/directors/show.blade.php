@@ -7,5 +7,5 @@
 @section('content')
     <h3>{{$director->name.' '.$director->surname}}</h3>
     Data di nascita: {{$director->date_of_birth}} <br>
-    <a href="/d/{{$director->id}}/edit">Modifica</a>
+    <a href="/director/{{$director->id}}/edit">Modifica</a>
 @endsection

@@ -38,7 +38,7 @@ class MoviesController extends Controller
     public function store(Request $request)
     {
         Movie::create($request->all());
-        return redirect('/m');
+        return redirect('/movie');
     }
 
     /**
@@ -47,9 +47,9 @@ class MoviesController extends Controller
      * @param  \App\Models\Movie  $movie
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    //Caso analogo a director
+    public function show(Movie $movie)
     {
-        $movie = Movie::findOrFail($id);
         $director = Director::findOrFail($movie->director_id);
         return view('movies.show',[
             'movie' => $movie,
@@ -63,9 +63,8 @@ class MoviesController extends Controller
      * @param  \App\Models\Movie  $movie
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Movie $movie)
     {
-        $movie = Movie::findOrFail($id);
         return view('movies.edit',compact('movie'));
     }
 
@@ -76,11 +75,10 @@ class MoviesController extends Controller
      * @param  \App\Models\Movie  $movie
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request,Movie $movie)
     {
-        $movie = Movie::findOrFail($id);
         $movie->update($request->all());
-        return redirect('/m');
+        return redirect('/movie');
     }
 
     /**
@@ -89,10 +87,9 @@ class MoviesController extends Controller
      * @param  \App\Models\Movie  $movie
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Movie $movie)
     {
-        $movie = Movie::findOrFail($id);
         $movie->delete();
-        return redirect('/m');
+        return redirect('/movie');
     }
 }

@@ -19,6 +19,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/d',DirectorsController::class);
+Route::resource('/director',DirectorsController::class);
 
-Route::resource('/m',MoviesController::class);
+Route::resource('/movie',MoviesController::class);
